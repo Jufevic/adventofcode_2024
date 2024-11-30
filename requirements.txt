@@ -1,0 +1,8 @@
+advent-of-code-data
+matplotlib
+numpy
+opencv-contrib-python
+pandas
+PySide6
+scipy
+sympy
