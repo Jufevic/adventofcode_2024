@@ -3,6 +3,7 @@ matplotlib
 numpy
 opencv-contrib-python
 pandas
+parse
 PySide6
 scipy
 sympy
