@@ -15,7 +15,7 @@ with open(INPUT_FILE) as f:
         M = np.array([[x_a, x_b], [y_a, y_b]])
         x_c, y_c = parse("Prize: X={:d}, Y={:d}", prize)
         c = np.array([x_c, y_c])
-        presses = np.dot(np.linalg.inv(M), c)
+        presses = np.linalg.solve(M, c)
 
         # Verify the result, there might be floating point precision errors
         presses = np.round(presses).astype(int)

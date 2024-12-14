@@ -17,7 +17,7 @@ with open(INPUT_FILE) as f:
         x_c += 10000000000000
         y_c += 10000000000000
         c = np.array([x_c, y_c])
-        presses = np.dot(np.linalg.inv(M), c)
+        presses = np.linalg.solve(M, c)
 
         # Verify the result, there might be floating point precision errors
         presses = np.round(presses).astype(int)
