@@ -35,7 +35,7 @@ while 0 <= position < len(program):
         operand = registers["C"]
     match opcode:
         case 0:
-            registers["A"] = int(registers["A"] / 2**operand)
+            registers["A"] = registers["A"] >> operand
             position += 2
         case 1:
             registers["B"] = registers["B"] ^ literal
@@ -55,10 +55,10 @@ while 0 <= position < len(program):
             outputs.append(operand % 8)
             position += 2
         case 6:
-            registers["B"] = int(registers["A"] / 2**operand)
+            registers["B"] = registers["A"] >> operand
             position += 2
         case 7:
-            registers["C"] = int(registers["A"] / 2**operand)
+            registers["C"] = registers["A"] >> operand
             position += 2
 
 print(f"{registers=}")
