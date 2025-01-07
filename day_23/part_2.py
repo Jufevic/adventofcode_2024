@@ -1,5 +1,6 @@
 from pathlib import Path
 from collections import defaultdict
+import networkx as nx
 
 CURRENT_FOLDER = Path(__file__).absolute().parent
 INPUT_FILE = CURRENT_FOLDER / "input.txt"
@@ -13,15 +14,6 @@ with open(INPUT_FILE) as f:
         graph[first].add(second)
         graph[second].add(first)
 
-three_connections = set()
-for first, connections in graph.items():
-    for second in connections:
-        for third in graph[second]:
-            if third in connections:
-                three_connections.add(frozenset({first, second, third}))
-
-total = 0
-for trio in three_connections:
-    if any(computer.startswith("t") for computer in trio):
-        total += 1
-print(total)
+G = nx.Graph(graph)
+largest_set = max(nx.algorithms.clique.find_cliques(G), key=len)
+print(",".join(sorted(largest_set)))
