@@ -34,7 +34,7 @@ for position in empties:
         if position + direction in empties:
             graph[(position, direction)][(position + direction, direction)] = 1
 
-# Dijlstra main loop
+# Dijkstra main loop
 frontier = []
 cost_so_far = defaultdict(int)
 cost_so_far[start] = 0
